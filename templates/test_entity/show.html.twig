@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TestEntity{% endblock %}
+
+{% block body %}
+    <h1>TestEntity</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ test_entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Dog</th>
+                <td>{{ test_entity.Dog }}</td>
+            </tr>
+            <tr>
+                <th>Cat</th>
+                <td>{{ test_entity.Cat }}</td>
+            </tr>
+            <tr>
+                <th>Lizard</th>
+                <td>{{ test_entity.Lizard }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('test_entity_index') }}">back to list</a>
+
+    <a href="{{ path('test_entity_edit', {'id': test_entity.id}) }}">edit</a>
+
+    {{ include('test_entity/_delete_form.html.twig') }}
+{% endblock %}
