@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contentss{% endblock %}
+
+{% block body %}
+    <h1>Create new Contentss</h1>
+
+    {{ include('contentss/_form.html.twig') }}
+
+    <a href="{{ path('contentss_index') }}">back to list</a>
+{% endblock %}
