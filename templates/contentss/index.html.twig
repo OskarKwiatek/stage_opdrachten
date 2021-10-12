@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contentss index{% endblock %}
+
+{% block body %}
+    <h1>Contentss index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cdate</th>
+                <th>Title</th>
+                <th>Seotext</th>
+                <th>Content</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contentss in contentsses %}
+            <tr>
+                <td>{{ contentss.id }}</td>
+                <td>{{ contentss.cdate ? contentss.cdate|date('Y-m-d H:i:s T') : '' }}</td>
+                <td>{{ contentss.title }}</td>
+                <td>{{ contentss.seotext }}</td>
+                <td>{{ contentss.content }}</td>
+                <td>{{ contentss.image }}</td>
+                <td>
+                    <a href="{{ path('contentss_show', {'id': contentss.id}) }}">show</a>
+                    <a href="{{ path('contentss_edit', {'id': contentss.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contentss_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contentss{% endblock %}
+
+{% block body %}
+    <h1>Contentss</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contentss.id }}</td>
+            </tr>
+            <tr>
+                <th>Cdate</th>
+                <td>{{ contentss.cdate ? contentss.cdate|date('Y-m-d H:i:s T') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ contentss.title }}</td>
+            </tr>
+            <tr>
+                <th>Seotext</th>
+                <td>{{ contentss.seotext }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ contentss.content }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ contentss.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contentss_index') }}">back to list</a>
+
+    <a href="{{ path('contentss_edit', {'id': contentss.id}) }}">edit</a>
+
+    {{ include('contentss/_delete_form.html.twig') }}
+{% endblock %}
