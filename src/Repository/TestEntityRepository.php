@@ -20,21 +20,20 @@ class TestEntityRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return TestEntity[] Returns an array of TestEntity objects
+    * @return TestEntity[] Returns an array of TestEntity objects          where Dog like %cat%
     *
     */
-    public function findByExampleField($value)
+    public function findBySearch($value)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
+            ->andWhere('t.Dog like :val')
             ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            //->orderBy('t.id', 'ASC')
+            //->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TestEntity

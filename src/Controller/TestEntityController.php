@@ -50,6 +50,25 @@ class TestEntityController extends AbstractController
         ]);
     }
 
+    // ...
+
+
+     #[Route("gecko/{slug}", name:"test_show",methods: ['GET'])]
+    public function showlizard(string $slug, TestEntityRepository $testEntityRepository): Response
+     {
+         $test_entity = $testEntityRepository -> findOneBy(['Lizard' => $slug]);
+         if ($test_entity) {
+             return $this->render('test_entity/show.html.twig', [
+                 'test_entity' => $testEntity,
+             ]);
+
+         } else {
+             return $this->redirectToRoute('default');
+
+         }
+     }
+
+
     #[Route('/{id}/edit', name: 'test_entity_edit', methods: ['GET','POST'])]
     public function edit(Request $request, TestEntity $testEntity): Response
     {

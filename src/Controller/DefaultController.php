@@ -21,9 +21,10 @@ class DefaultController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             //var_dump($form->getViewData()["search"]);
-            $test_entities = $testEntityRepository-> findBy(['Dog' => $form->getViewData()["search"]]);
-            return $this->render("default/index.html.twig". [
-            "test_entities" => $test_entities, ]);
+            $test_entities = $testEntityRepository-> findBySearch([$form->getViewData()]);
+            return $this->render("test_entity/index.html.twig". [
+            "test_entities" => $test_entities,
+                ]);
         }
 
         return $this->render('default/index.html.twig', [
